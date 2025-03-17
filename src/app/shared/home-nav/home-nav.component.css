@@ -1,0 +1,26 @@
+.nav_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 24px;
+
+    figure{
+      margin-bottom: 0;
+    }
+
+    a{
+      text-decoration: none;
+      color: black;
+    }
+
+    ul{
+      list-style-type: none;
+      margin-bottom: 0;
+    }
+  }
+
+  .logo{
+    max-width: 100px;
+    height: auto;
+  }
