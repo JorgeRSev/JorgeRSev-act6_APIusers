@@ -5,10 +5,16 @@
     </div>
     <div class="w-50 d-flex flex-column justify-content-left border-start border-dark">
       <ul class="list-unstyled text-start ps-5">
-        <li class="pb-3">{{ miUsusario.first_name }}</li>
-        <li class="pb-3">{{ miUsusario.last_name }}</li>
-        <li class="pb-3">{{ miUsusario.username }}</li>
-        <li class="pb-3">{{ miUsusario.email }}</li>
+        <li class="pb-3 fs-3">{{ miUsusario.first_name }}</li>
+        <li class="pb-3 fs-3">{{ miUsusario.last_name }}</li>
+        <li class="pb-3 d-flex gap-2">
+          <div class="fw-bold">Nombre de Usuario: </div>
+          <div>{{ miUsusario.username }}</div> 
+        </li>
+        <li class="pb-3 d-flex gap-2">
+          <div class="fw-bold">Email:</div>
+          <div>{{ miUsusario.email }}</div> 
+        </li>
       </ul>
       <div class="text-start ps-5">
         <app-buttons></app-buttons>
