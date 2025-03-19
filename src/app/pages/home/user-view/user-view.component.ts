@@ -10,15 +10,15 @@ import { ButtonsComponent } from '../../../shared/buttons/buttons.component';
   styleUrl: './user-view.component.css'
 })
 export class UserViewComponent {
-  miUsusario: IUser | any;
-  @Input() _id: string = ""
+  miUsuario: IUser | any;
+  @Input() idUser: string = ""
   userServices = inject(UsersService)
 
 
   async ngOnInit() {
     try{
-    this.miUsusario = await this.userServices.getById(this._id)
-    console.log('Estoy en el ngOnInit de la vista usuario',this.miUsusario)
+    this.miUsuario = await this.userServices.getById(this.idUser)
+    console.log('Estoy en el ngOnInit de la vista usuario',this.miUsuario)
     } catch (error) {
     console.log(error)
     }

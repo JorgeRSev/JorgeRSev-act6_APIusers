@@ -1,6 +1,7 @@
 <section class="container">
   <h1 class="my-3"> {{title}} USUARIO</h1>
-  <form [formGroup]="userForm" ngSubmit="updateUser" class="d-flex flex-column gap-5 ps-3">
+  <form [formGroup]="userForm" (ngSubmit)="updateUser()" class="d-flex flex-column gap-5 ps-3">
+    <input type="hidden" formControlName="_id">
     <div class="d-flex flex-column gap-1">
       <label for="first_name">Nombre Usuario</label>
       <input type="text" id="first_name" formControlName="first_name">
@@ -18,7 +19,8 @@
       <input type="text" id="image" formControlName="image">
     </div>
     <div>
-      <input type="submit" value="Actualizar" class="py-2 px-3 bg-light">
+      <input type="submit" class="py-2 px-3 bg-light" 
+      [value]="userForm.get('idUser')?.value ? 'Actualizar' : 'Registrar'">
     </div>
   </form>
 </section>
