@@ -1,13 +1,15 @@
 <section class="container">
-  <h1 class="my-3"> {{title}} USUARIO</h1>
-  <form [formGroup]="userForm" (ngSubmit)="updateUser()" class="d-flex flex-column gap-5 ps-3">
+  <h1 class="my-3 fs-3 text-uppercase"> {{title}} usuario</h1>
+  <form [formGroup]="userForm" (ngSubmit)="getDataUser()" class="d-flex flex-column gap-5 ps-3">
     <input type="hidden" formControlName="_id">
+    <input type="hidden" formControlName="id">
+    <input type="hidden" formControlName="password">
     <div class="d-flex flex-column gap-1">
       <label for="first_name">Nombre Usuario</label>
       <input type="text" id="first_name" formControlName="first_name">
     </div>
     <div class="d-flex flex-column gap-1">
-      <label for="last_name">Apeliido Usuario</label>
+      <label for="last_name">Apellido Usuario</label>
       <input type="text" id="last_name" formControlName="last_name">
     </div>
     <div class="d-flex flex-column gap-1">
@@ -18,9 +20,13 @@
       <label for="image">Imagen Usuario</label>
       <input type="text" id="image" formControlName="image">
     </div>
+    <div class="d-flex flex-column gap-1">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username">
+    </div>
     <div>
       <input type="submit" class="py-2 px-3 bg-light" 
-      [value]="userForm.get('idUser')?.value ? 'Actualizar' : 'Registrar'">
+      [value]="userForm.get('_id')?.value ? 'Actualizar' : 'Registrar'">
     </div>
   </form>
 </section>
