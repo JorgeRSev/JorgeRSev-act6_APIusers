@@ -13,5 +13,4 @@ export class UserCardComponent {
 
   @Input() miUsuario!: IUser;
   userService = inject(UsersService)
-
 }
