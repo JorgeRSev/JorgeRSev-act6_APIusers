@@ -1,0 +1,3 @@
+.anchoCard{
+  flex-basis: calc(25% - 1rem);
+}
