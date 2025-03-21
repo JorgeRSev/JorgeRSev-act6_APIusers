@@ -20,13 +20,18 @@ export class UsersService {
 
 
   update(user: IUser): Promise<IUser> {
-    let { _id, ...userData } = user;
+    let { _id, id, ...userData } = user;
+    console.log('Estoy en el update USerDAta: ',userData)
     return lastValueFrom(this.httpClient.put<IUser>(`${this.endPoint}/${_id}`, userData))
   }
 
   create(user: IUser): Promise<IUser>{
-    let { _id, ...userData } = user;
-    return lastValueFrom(this.httpClient.post<IUser>(this.endPoint, userData))
+    console.log('Estoy en el create USerDAta: ',user)
+    return lastValueFrom(this.httpClient.post<IUser>(this.endPoint, user))
+  }
+
+  delete(id: string): Promise<IUser>{
+    return lastValueFrom(this.httpClient.delete<IUser>(`${this.endPoint}/${id}`))
   }
 
 
