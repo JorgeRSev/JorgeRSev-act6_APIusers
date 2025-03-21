@@ -24,9 +24,7 @@ arrUsers: IUser[] = []
   async getUsers(){
     try{  
       this.res = await this.usersServices.getAll()
-      console.log(this.res)
       this.arrUsers = this.res.results;
-      console.log('Estoy en la funcion obtener usuarios en users-list', this.arrUsers)
     }catch (msg: any) {
         console.log(msg) 
     }
