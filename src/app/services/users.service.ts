@@ -10,8 +10,8 @@ export class UsersService {
   private httpClient = inject(HttpClient);
   private endPoint: string = "https://peticiones.online/api/users";
 
-  getAll(): Promise<IRes> {
-    return lastValueFrom(this.httpClient.get<IRes>(this.endPoint));
+  getAll(page: number = 1): Promise<IRes> {
+    return lastValueFrom(this.httpClient.get<IRes>(`${this.endPoint}?page=${page}`));
   }
 
   getById(id: string): Promise<IUser> {
