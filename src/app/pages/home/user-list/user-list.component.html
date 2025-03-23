@@ -8,4 +8,9 @@
       </article>
     }
   </div>
+  <div class="pagination">
+    @for (page of arrPage; track page) {
+      <button (click)="changePage(page)">Pág {{ page }}</button>
+    }
+  </div>
 </section>
