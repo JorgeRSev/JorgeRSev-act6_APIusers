@@ -1,15 +1,13 @@
-<section class="row">
-  <div class="card p-0">
+<section class="card p-0 h-100 d-flex flex-column">
     <figure>
-      <img [src]="miUsuario.image" alt="imagen del usuario" class="card-img-top img-fluid w-100" />
+      <img [src]="miUsuario.image" alt="imagen del usuario" class="card-img-top img-fluid w-100 rounded-circle p-3" />
     </figure>
-    <div class="card-body text-center p-0">
-      <div class="card-title mb-3">
+    <div class="card-body text-center p-0 d-flex flex-column flex-grow-1">
+      <div class="card-title mb-3 px-1">
         {{miUsuario.first_name}} {{miUsuario.last_name}}
       </div>
-      <div>
+      <div class="mt-auto">
         <app-buttons [miUsuario]="miUsuario"></app-buttons>
       </div>
     </div>
-  </div>
 </section>

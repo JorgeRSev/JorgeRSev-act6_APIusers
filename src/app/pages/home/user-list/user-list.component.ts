@@ -15,20 +15,32 @@ res!: IRes
 usersServices = inject(UsersService)
 arrUsers: IUser[] = []
 @Input() miUsuario!: IUser
+arrPage: number[] = [];
+currentPage: number = 1;
 
 
-  ngOnInit(){
-    this.getUsers()
-  }
+ngOnInit() {
+  this.getUsers(this.currentPage);
+}
 
-  async getUsers(){
-    try{  
-      this.res = await this.usersServices.getAll()
-      console.log(this.res)
-      this.arrUsers = this.res.results;
-      console.log('Estoy en la funcion obtener usuarios en users-list', this.arrUsers)
-    }catch (msg: any) {
-        console.log(msg) 
+async getUsers(page: number = 1) {
+  try {
+    this.res = await this.usersServices.getAll(page);
+    this.arrUsers = this.res.results;
+    this.currentPage = this.res.page;
+    this.arrPage = [];
+    
+    for (let i = 1; i <= this.res.total_pages; i++) {
+      this.arrPage.push(i);
     }
+  } catch (error) {
+    toast.error('No se pudieron cargar los usuarios');
   }
+}
+
+changePage(page: number) {
+  if (page !== this.currentPage) {
+    this.getUsers(page);
+  }
+}
 }
