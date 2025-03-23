@@ -1,0 +1,10 @@
+@media(max-width: 274px){
+  .buttonList{
+    flex-wrap: wrap;
+    gap: 12px;
+
+    li{
+      border-radius: 0.375rem;
+    }
+  }
+}

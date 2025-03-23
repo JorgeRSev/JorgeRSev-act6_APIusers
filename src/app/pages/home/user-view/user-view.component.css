@@ -1,0 +1,29 @@
+li{
+  word-break: break-word;
+}
+
+@media (max-width: 768px){
+  section .mobile{
+    flex-direction: column;
+    gap: 24px;
+
+    .divImg{
+      min-width: 100%;
+      margin-left: 12px;
+    }
+  }
+
+  .bodyUser{
+    width: 100% !important;
+    border: none !important;
+    padding-left: 12px !important;
+    margin-left: 12px; 
+
+    li{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+
