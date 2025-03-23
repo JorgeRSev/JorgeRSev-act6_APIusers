@@ -19,7 +19,6 @@ export class UsersService {
   }
 
   create(user: IUser): Promise<IUser>{
-    console.log('Estoy en el create USerDAta: ',user)
     return lastValueFrom(this.httpClient.post<IUser>(this.endPoint, user))
   //   .then(createUser => {
   //     console.log('Usuario añadido: ', createUser);
@@ -30,8 +29,7 @@ export class UsersService {
   delete(id: string): Promise<IUser>{
     return lastValueFrom(this.httpClient.delete<IUser>(`${this.endPoint}/${id}`))
 
-    // // Prueba para visualizar el usuario eliminado
-
+    // Prueba para visualizar el usuario eliminado
     // .then(deleteUser => {
     //   console.log('Usuario eliminado: ', deleteUser);
     //   return deleteUser;
@@ -40,7 +38,6 @@ export class UsersService {
 
   update(user: IUser): Promise<IUser> {
     let { _id, id, ...userData } = user;
-    console.log('Estoy en el update USerDAta: ',userData)
     return lastValueFrom(this.httpClient.put<IUser>(`${this.endPoint}/${_id}`, userData))
   //   .then(updatedUser => {
   //     console.log('Nuevos datos del usuario: ', updatedUser);

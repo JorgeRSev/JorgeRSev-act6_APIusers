@@ -1,11 +1,14 @@
 <ul  class="d-flex flex-row list-unstyled buttonList">
+
   @if (volver) {
+    @if(!miUsuario?.error){
     <li class="w-100 d-flex flex-column justify-content-center align-items-center border border-dark rounded-start">
       <button (click)="deleteUser(miUsuario?._id)" class="btn btn-sm">Eliminar</button>
     </li>
     <li class="w-100 d-flex flex-column justify-content-center align-items-center border border-dark">
       <button class="btn btn-sm" [routerLink]="['/home', 'user', 'update', miUsuario?._id]">Actualizar</button>
     </li>
+  }
     <li class="w-100 d-flex flex-column justify-content-center align-items-center border border-dark rounded-end">
       <button class="btn btn-sm" [routerLink]="['/home', 'users',]">Volver al listado</button>
     </li>

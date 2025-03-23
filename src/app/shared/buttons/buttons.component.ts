@@ -18,12 +18,12 @@ export class ButtonsComponent {
 
   deleteUser(id: string){
     toast(`Vas a borrar al empleado ${this.miUsuario.first_name} ${this.miUsuario.last_name} `, {
+      position: "top-center",
       action: {
         label: 'Aceptar',
         onClick: async () => {
           await this.userServices.delete(id)
           this.router.navigate(['/home', 'users'])
-
         }
       }
     });

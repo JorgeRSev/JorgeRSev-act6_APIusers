@@ -23,42 +23,42 @@ export class UserFormComponent {
     if (this.idUser){
       try{
       this.miUsuario = await this.userServices.getById(this.idUser)
-      // console.log('Estoy en el ngOnInit del formulario de usuario',this.miUsuario)
       this.title = "Actualizar"
       } catch(msg: any){
         toast.error(msg.error)
-        console.log(msg)
       }
     }
 
     this.userForm = new FormGroup({
     _id: new FormControl(this.idUser || null, []),
     id: new FormControl(this.miUsuario?.id || 0, []),
-    first_name: new FormControl(this.miUsuario?.first_name || "", []),
-    last_name: new FormControl(this.miUsuario?.last_name || "", []),
-    email: new FormControl(this.miUsuario?.email || "", []),
-    image: new FormControl(this.miUsuario?.image || "", []),
-    username: new FormControl(this.miUsuario?.username || "", []),
+    first_name: new FormControl(this.miUsuario?.first_name || "", [Validators.required]),
+    last_name: new FormControl(this.miUsuario?.last_name || "", [Validators.required]),
+    email: new FormControl(this.miUsuario?.email || "", [Validators.required]),
+    image: new FormControl(this.miUsuario?.image || "", [Validators.required]),
+    username: new FormControl(this.miUsuario?.username || "", [Validators.required]),
     password: new FormControl(this.miUsuario?.password || Math.random().toString().slice(2, 10), [])
     });
   }
 
 
   async getDataUser(){
-    let res: IUser | any
-    try{
-      if(this.userForm.value._id){
-        console.log('Estoy en el getDataUser del formulario de usuario',this.userForm.value)
-        res = await this.userServices.update(this.userForm.value)
-      } else{
-        console.log('Estoy en el getDataUser del formulario de usuario')
-        res = await this.userServices.create(this.userForm.value)    
-      }
-      // this.router.navigate(['/home', 'users'])
-    }catch(msg: any){
-      toast.error(msg.error)
-      console.log(msg)
+    if (this.userForm.invalid) {
+      toast.error("Por favor, completa todos los campos obligatorios.");
+      return;
     }
+    let res: IUser | any
+      try{
+        if(this.userForm.value._id){
+          res = await this.userServices.update(this.userForm.value)
+        } else{
+          res = await this.userServices.create(this.userForm.value)    
+        }
+        this.router.navigate(['/home', 'users'])
+
+      }catch(msg: any){
+        toast.error(msg.error)
+      }
   }
 }
 

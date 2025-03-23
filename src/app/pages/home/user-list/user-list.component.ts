@@ -26,11 +26,10 @@ ngOnInit() {
 async getUsers(page: number = 1) {
   try {
     this.res = await this.usersServices.getAll(page);
-    console.log(this.res)
     this.arrUsers = this.res.results;
     this.currentPage = this.res.page;
-    
     this.arrPage = [];
+    
     for (let i = 1; i <= this.res.total_pages; i++) {
       this.arrPage.push(i);
     }
@@ -40,7 +39,6 @@ async getUsers(page: number = 1) {
 }
 
 changePage(page: number) {
-  console.log(page)
   if (page !== this.currentPage) {
     this.getUsers(page);
   }
